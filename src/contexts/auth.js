@@ -29,7 +29,22 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('SistemaUser', JSON.stringify(data))
     }
 
-    async function signUp(email, password, name, type) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('checkout');
+    const [name, setName] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [celular, setCelular] = useState('');
+    const [namecard, setNamecard] = useState('');
+    const [numbercard, setNumbercard] = useState('');
+    const [expire, setExpire] = useState('');
+    const [cvv, setCvv] = useState('');
+    const [address, setAddress] = useState('');
+    const [district, setDistrict] = useState('');
+    const [extra, setExtra] = useState('');
+
+    const [level, setLevel] = useState(1);
+
+    async function signUp() {
         setLoading(true);
         await firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(async (value) => {
@@ -38,13 +53,29 @@ export const AuthProvider = ({ children }) => {
                 await firebase.firestore().collection('users').doc(uid).set({
                     email,
                     name,
-                    type
+                    cpf,
+                    celular,
+                    namecard,
+                    numbercard,
+                    expire,
+                    cvv,
+                    address,
+                    district,
+                    extra,
                 })
                     .then(() => {
                         let data = {
                             email,
                             name,
-                            type
+                            cpf,
+                            celular,
+                            namecard,
+                            numbercard,
+                            expire,
+                            cvv,
+                            address,
+                            district,
+                            extra,
                         }
                         setUser(data);
                         storageUser(data)
@@ -169,7 +200,31 @@ export const AuthProvider = ({ children }) => {
             loading,
             signUp,
             signIn,
-            signOut
+            signOut, 
+            email,
+            setEmail,
+            name,
+            setName,
+            cpf,
+            setCpf,
+            celular,
+            setCelular,
+            namecard,
+            setNamecard,
+            expire,
+            setExpire,
+            cvv,
+            setCvv,
+            setAddress,
+            address,
+            district,
+            setDistrict,
+            setExtra,
+            extra,
+            level, 
+            setLevel,
+            numbercard,
+            setNumbercard
         }}>
             {children}
         </AuthContext.Provider>
