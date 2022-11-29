@@ -11,10 +11,16 @@ export const Container = styled.div`
     flex-direction: column;
 
     img{
-        width: 100%;
+        width: 98%;
 
         border-bottom: 3px solid #000;
+
+        @media (max-height: 750px) {
+            max-height: 400px;
+        }
     }
+
+
 
     .close{
         position: fixed;
