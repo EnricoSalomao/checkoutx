@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container } from './styles';
 
 import Logo from '../../assets/reserva-logo.png'
@@ -7,7 +7,11 @@ import Logo2 from '../../assets/integralmedica.png'
 
 import { useParams } from 'react-router';
 
+import { AuthContext } from '../../contexts/auth';
+
 export default function Header() {
+    const { signOut } = useContext(AuthContext);
+
     let { id } = useParams();
  return (
     <Container>
@@ -16,7 +20,7 @@ export default function Header() {
         ) : (
             <img src={Logo2}/>
         )}
-        <img src={Bell} className={"bell"}/>
+        <img src={Bell} className={"bell"} onClick={() => signOut()}/>
     </Container>
  );
 }

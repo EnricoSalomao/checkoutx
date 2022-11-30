@@ -3,13 +3,18 @@ import { Container } from './styles';
 
 import { AuthContext } from '../../contexts/auth';
 import { useHistory } from 'react-router-dom';
+
+import { useParams } from 'react-router';
 export default function LoggedData() {
     const { user } = useContext(AuthContext);
+
+    let { id } = useParams();
+    
 
     let history = useHistory();
 
     function go(){
-        history.push('/order')
+        history.push(`/${id}/order`)
     }
 
  return (
