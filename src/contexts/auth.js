@@ -38,8 +38,11 @@ export const AuthProvider = ({ children }) => {
     const [numbercard, setNumbercard] = useState('');
     const [expire, setExpire] = useState('');
     const [cvv, setCvv] = useState('');
+    const [cep, setCep] = useState('');
     const [address, setAddress] = useState('');
     const [district, setDistrict] = useState('');
+    const [number, setNumber] = useState('');
+    const [city, setCity] = useState('');
     const [extra, setExtra] = useState('');
 
     const [level, setLevel] = useState(1);
@@ -62,6 +65,9 @@ export const AuthProvider = ({ children }) => {
                     address,
                     district,
                     extra,
+                    cep,
+                    number,
+                    city
                 })
                     .then(() => {
                         let data = {
@@ -76,6 +82,9 @@ export const AuthProvider = ({ children }) => {
                             address,
                             district,
                             extra,
+                            cep,
+                            number,
+                            city
                         }
                         setUser(data);
                         storageUser(data)
@@ -224,7 +233,13 @@ export const AuthProvider = ({ children }) => {
             level, 
             setLevel,
             numbercard,
-            setNumbercard
+            setNumbercard,
+            cep, 
+            setCep,
+            number,
+            setNumber,
+            city, 
+            setCity
         }}>
             {children}
         </AuthContext.Provider>

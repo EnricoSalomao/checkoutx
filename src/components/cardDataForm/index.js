@@ -3,15 +3,26 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/auth';
 import { Container } from './styles';
 
+import InputMask from "react-input-mask";
+
+import { useHistory } from 'react-router-dom';
+
 export default function CardDataForm() {
-    const { namecard, setNamecard, numbercard, setNumbercard, expire, setExpire, cvv, setCvv, setLevel} = useContext(AuthContext);
+    const { namecard, setNamecard, numbercard, setNumbercard, expire, setExpire, cvv, setCvv, signUp} = useContext(AuthContext);
+
+    let history = useHistory()
+
+    function finish(){
+        signUp()
+        history.push('/order')
+    }
  return (
     <Container>
         <div className='forms'>
             <div className='input-area'>
-                <h1>Nome do responsável</h1>
+                <h1>Nome que está no cartão</h1>
                 <input
-                placeholder="Insira seu nome completo"
+                placeholder="Insira o nome completo"
                 value={namecard}
                 onChange={text => setNamecard(text.target.value)}
                 />
@@ -19,7 +30,8 @@ export default function CardDataForm() {
 
             <div className='input-area'>
                 <h1>Número do cartão</h1>
-                <input
+                <InputMask   
+                mask={'9999 9999 9999 9999'}
                 placeholder="**** **** **** ****"
                 value={numbercard}
                 onChange={text => setNumbercard(text.target.value)}
@@ -28,7 +40,8 @@ export default function CardDataForm() {
 
             <div className='input-area'>
                 <h1>Validade</h1>
-                <input
+                <InputMask   
+                mask={'99/99'}
                 placeholder="Mês/ano"
                 value={expire}
                 onChange={text => setExpire(text.target.value)}
@@ -37,14 +50,15 @@ export default function CardDataForm() {
 
             <div className='input-area'>
                 <h1>cvv</h1>
-                <input
+                <InputMask   
+                mask={'999'}
                 placeholder="***"
                 value={cvv}
                 onChange={text => setCvv(text.target.value)}
                 />
             </div>
 
-            <button onClick={() => setLevel(3)}>
+            <button onClick={finish}>
                 Cadastrar
             </button>
         </div>

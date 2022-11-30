@@ -20,9 +20,11 @@ export default function Checkout() {
             {level == 1 ? (
                 <UserDataForms/>
             ) : level == 2 ? (
+                <ShipDataForm/>
+            ) : level == 3 ? (
                 <CardDataForm/>
             ) : (
-                <ShipDataForm/>
+                <></>
             )}
             </>
         ) : (

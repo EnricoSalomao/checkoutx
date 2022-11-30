@@ -11,6 +11,22 @@ export const Container = styled.div`
 
     margin-top: 1rem;
 
+    button{
+        width: 300px;
+        height: 55px;
+
+        background: #000000;
+        border-radius: 12px;
+        border: 0;
+
+        font-weight: 500;
+        font-size: 14px;
+
+        color: #FFFFFF;
+
+        margin-top: 2rem;
+    }
+
     .info{
         width: 360px;
 

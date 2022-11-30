@@ -2,8 +2,15 @@ import React, {useContext} from 'react';
 import { Container } from './styles';
 
 import { AuthContext } from '../../contexts/auth';
+import { useHistory } from 'react-router-dom';
 export default function LoggedData() {
     const { user } = useContext(AuthContext);
+
+    let history = useHistory();
+
+    function go(){
+        history.push('/order')
+    }
 
  return (
     <Container>
@@ -27,13 +34,19 @@ export default function LoggedData() {
             </div>
             <div className='second'>
                 <h1>Endereço:</h1>
-                <h2>{user.address}</h2>
+                <h2>{user.address}, {user.number}</h2>
             </div>
             <div className='second'>
                 <h1>Bairro:</h1>
                 <h2>{user.district}</h2>
             </div>
+            <div className='second'>
+                <h1>Cidade:</h1>
+                <h2>{user.city}</h2>
+            </div>
         </div>
+
+        <button onClick={go}>Finalizar Compra</button>
     </Container>
  );
 }

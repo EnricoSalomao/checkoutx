@@ -12,10 +12,10 @@ import Route from './route'
 export const Routes = () => {
   return (
     <Switch>
-        <Route exact path='/' component={ Home }/>
-        <Route exact path='/product' component={ Products }/>
-        <Route exact path='/checkout' component={ Checkout }/>
-        <Route exact path='/order' component={ Order }/>
+        <Route exact path='/:id' component={ Home }/>
+        <Route exact path='/:id/product' component={ Products }/>
+        <Route exact path='/:id/checkout' component={ Checkout }/>
+        <Route exact path='/:id/order' component={ Order }/>
     </Switch>
   );
 }
