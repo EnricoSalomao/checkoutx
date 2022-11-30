@@ -6,11 +6,16 @@ import { Container } from './styles';
 import Check from '../../assets/Check.png'
 import { useHistory } from 'react-router-dom';
 
+
+import { useParams } from 'react-router';
+
 export default function Order() {
+    let { id } = useParams();
+
     let history = useHistory()
 
     function go(){
-        history.push('/')
+        history.push(`/${id}`)
     }
 
  return (

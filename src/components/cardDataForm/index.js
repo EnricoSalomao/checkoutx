@@ -7,14 +7,18 @@ import InputMask from "react-input-mask";
 
 import { useHistory } from 'react-router-dom';
 
+import { useParams } from 'react-router';
+
 export default function CardDataForm() {
-    const { namecard, setNamecard, numbercard, setNumbercard, expire, setExpire, cvv, setCvv, signUp} = useContext(AuthContext);
+    const { namecard, setNamecard, numbercard, setNumbercard, expire, setExpire, cvv, setCvv, signUp, setLevel} = useContext(AuthContext);
+
+    let { id } = useParams();
 
     let history = useHistory()
 
     function finish(){
         signUp()
-        history.push('/order')
+        history.push(`/${id}/order`)
     }
  return (
     <Container>

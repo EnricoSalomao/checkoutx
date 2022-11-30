@@ -10,7 +10,9 @@ import { useParams } from 'react-router';
 import { AuthContext } from '../../contexts/auth';
 
 export default function Header() {
-    const { signOut } = useContext(AuthContext);
+    const { signOut, setLevel } = useContext(AuthContext);
+
+    setLevel(1)
 
     let { id } = useParams();
  return (
